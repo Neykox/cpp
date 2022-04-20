@@ -7,7 +7,6 @@
 class contact
 {
 	public:
-		// void set_data(std::string target, std::string data);
 		void set_data(std::string data);
 
 	private:

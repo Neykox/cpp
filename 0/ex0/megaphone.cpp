@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     {
         while (argv[i][j])
         {
-            std::cout << (char) toupper(argv[i][j]);
+            std::cout << (char) toupper(argv[i][j]);//need to add std:: somewhere
             j++;
         }
         i++;

@@ -1,8 +1,8 @@
-SRCS = 	phonebook.cpp contact.cpp
+SRCS = 	main.cpp phonebook.cpp contact.cpp
 C.O = ${SRCS:.c=.o}
 
 H = includes/megaphone.hpp
-NAME = megaphone
+NAME = phonebook
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
