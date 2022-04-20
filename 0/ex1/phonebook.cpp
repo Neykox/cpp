@@ -1,5 +1,16 @@
 #include "phonebook.hpp"
 
+phoneBook::phoneBook(void)
+{
+	std::cout << "Constructor called" << std::endl;
+	this->oldest = 0;
+}
+
+phoneBook::~phoneBook(void)
+{
+	std::cout << "Destructor called" << std::endl;
+}
+
 void phoneBook::change_oldest(std::string *data[5])
 {
 	fill_contact(this->repertoir[this->oldest], data);
