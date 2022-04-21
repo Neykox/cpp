@@ -7,7 +7,7 @@ int main()
 {
 	std::string	cmd;
 	phoneBook	rep;
-	std::string	*data[5];
+	std::string	data[5];
 	int			i = 0;
 
 	while(1)
@@ -19,12 +19,12 @@ int main()
 			{
 				std::cout << "Enter info :" << std::endl;
 				std::getline(std::cin, cmd);
-				data[i] = &cmd;
+				data[i] = cmd;
 				while (cmd == "")
 				{
 					std::cout << "Cannot be empty" << std::endl;
 					std::getline(std::cin, cmd);
-					data[i] = &cmd;
+					data[i] = cmd;
 				}
 				i++;
 			}
@@ -32,7 +32,7 @@ int main()
 			i = 0;
 			while (i < 5)
 			{
-				data[i]->clear();
+				data[i].clear();
 				i++;
 			}
 		}

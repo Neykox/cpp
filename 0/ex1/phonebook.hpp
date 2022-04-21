@@ -11,10 +11,11 @@ class phoneBook
 		phoneBook(void);
 		~phoneBook(void);
 		int	check_place(void);
-		void change_oldest(std::string *data[5]);
-		void fill_contact(std::string *data[5]);
+		void change_oldest(void);
+		//void change_oldest(std::string *data[5]);
+		void fill_contact(std::string data[5]);
 	private:
-		contact::repertoir[8];
+		contact repertoir[8];
 		int oldest;
 };
 
