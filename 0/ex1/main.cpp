@@ -10,6 +10,7 @@ int main()
 	std::string	data[5];
 	int			i = 0;
 
+	std::cout << "Welcome :" << std::endl;
 	while(1)
 	{
 		std::getline(std::cin, cmd);

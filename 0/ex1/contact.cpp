@@ -2,8 +2,17 @@
 
 void contact::set_data(std::string data)
 {
-	this->info[this->i] = data;
-	this->i++;
-	if (this->i == 5)
-		this->i = 0;
+	static int i;
+	this->info[i] = data;
+	i++;
+	if (i == 5)
+		i = 0;
+}
+
+void contact::show_data()
+{
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << this->info[i] << std::endl;
+	}
 }
