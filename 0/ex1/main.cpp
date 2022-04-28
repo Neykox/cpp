@@ -23,19 +23,22 @@ int main()
 				data[i] = cmd;
 				while (cmd == "")
 				{
-					std::cout << "Cannot be empty" << std::endl;
+					std::cout << "Cannot be empty :" << std::endl;
 					std::getline(std::cin, cmd);
 					data[i] = cmd;
 				}
 				i++;
 			}
-			rep.fill_contact(data);
 			i = 0;
-			while (i < 5)
-			{
-				data[i].clear();
-				i++;
-			}
+			for (int z = 0; z < 5; z++)
+				std::cout << "data = |" << data[z] << "|" << std::endl;
+			rep.fill_contact(data);
+			// i = 0;
+			// while (i < 5)
+			// {
+			// 	data[i].clear();
+			// 	i++;
+			// }
 		}
 		else if (cmd == "EXIT")
 			return (1);
