@@ -15,4 +15,5 @@ void contact::show_data()
 	{
 		std::cout << this->info[i] << std::endl;
 	}
+	std::cout << std::endl;
 }

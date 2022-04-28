@@ -40,6 +40,17 @@ int main()
 			// 	i++;
 			// }
 		}
+		if (cmd == "SEARCH")
+		{
+			std::cout << "Enter index :" << std::endl;
+			std::getline(std::cin, cmd);
+			while (cmd == "")
+			{
+				std::cout << "Cannot be empty :" << std::endl;
+				std::getline(std::cin, cmd);
+			}
+			rep.search(std::atoi(cmd));
+		}
 		else if (cmd == "EXIT")
 			return (1);
 		//clear(cmd)/cmd.clear;

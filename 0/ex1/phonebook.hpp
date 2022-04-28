@@ -13,6 +13,7 @@ class phoneBook
 		int	check_place(void);
 		void change_oldest(void);
 		void fill_contact(std::string data[5]);
+		int search(int index);
 	private:
 		contact repertoir[8];
 		int oldest;
