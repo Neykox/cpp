@@ -1,14 +1,16 @@
-#include "contact.hpp"
-#include "phonebook.hpp"
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 
 int main()
 {
 	std::string	cmd;
-	phoneBook	rep;
+	PhoneBook	rep;
 	std::string	data[5];
 	int			i = 0;
+	long int	index;
 
 	std::cout << "Welcome :" << std::endl;
 	while(1)
@@ -33,15 +35,10 @@ int main()
 			for (int z = 0; z < 5; z++)
 				std::cout << "data = |" << data[z] << "|" << std::endl;
 			rep.fill_contact(data);
-			// i = 0;
-			// while (i < 5)
-			// {
-			// 	data[i].clear();
-			// 	i++;
-			// }
 		}
-		if (cmd == "SEARCH")
+		else if (cmd == "SEARCH")
 		{
+			rep.show_search();
 			std::cout << "Enter index :" << std::endl;
 			std::getline(std::cin, cmd);
 			while (cmd == "")
@@ -49,11 +46,11 @@ int main()
 				std::cout << "Cannot be empty :" << std::endl;
 				std::getline(std::cin, cmd);
 			}
-			rep.search(std::atoi(cmd));
+			index = strtol(cmd, NULL, 10);
+			rep.search(1);
 		}
 		else if (cmd == "EXIT")
 			return (1);
-		//clear(cmd)/cmd.clear;
 	}
 	return (0);
 }

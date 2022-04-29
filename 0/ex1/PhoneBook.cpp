@@ -1,6 +1,6 @@
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
-phoneBook::phoneBook(void)
+PhoneBook::PhoneBook(void)
 {
 	std::cout << "Constructor called" << std::endl;
 	this->oldest = -1;
@@ -13,12 +13,12 @@ phoneBook::phoneBook(void)
 	}
 }
 
-phoneBook::~phoneBook(void)
+PhoneBook::~PhoneBook(void)
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
-void phoneBook::change_oldest(void)
+void PhoneBook::change_oldest(void)
 {
 	if (this->oldest == 8)
 	{
@@ -27,7 +27,7 @@ void phoneBook::change_oldest(void)
 	}
 }
 
-void phoneBook::fill_contact(std::string data[5])
+void PhoneBook::fill_contact(std::string data[5])
 {
 	int target = check_place();
 	if (target == 8)
@@ -46,16 +46,26 @@ void phoneBook::fill_contact(std::string data[5])
 	// this->repertoir[target].show_data();
 }
 
-int phoneBook::check_place(void)
+int PhoneBook::check_place(void)
 {
 	this->oldest++;
 	return (this->oldest);
 }
 
-int phoneBook::search(int index)
+void PhoneBook::show_search(void)
 {
-	if (index < 0 || index > 7)
+	for (int z = 0; z < 8; z++)
+	{
+		std::cout << '|' << std::setfill (' ') << std::setw (10);
+		std::cout << z + 1;
+		this->repertoir[z].show_data();
+	}
+}
+
+int PhoneBook::search(int index)
+{
+	if (index < 1 || index > 8)
 		return (1);
-	this->repertoir[index].show_data();
+	this->repertoir[index--].show_all_data();
 	return (0);
 }

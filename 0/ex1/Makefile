@@ -1,21 +1,15 @@
-SRCS = 	main.cpp phonebook.cpp contact.cpp
+SRCS = 	main.cpp PhoneBook.cpp Contact.cpp
 C.O = ${SRCS:.c=.o}
 
-H = includes/megaphone.hpp
 NAME = phonebook
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-DEBUG = -g
-ADDRESS = -fsanitize=address
 
 all : $(NAME)
 
 $(NAME) :
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
-
-address : clean
-	$(CC) $(FLAGS) $(ADDRESS) $(SRCS) -o leak_adr
 
 # clean :
 # 	rm -f $(C.O)

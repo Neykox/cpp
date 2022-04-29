@@ -3,19 +3,20 @@
 
 # include <iostream>
 # include <string>
-# include "contact.hpp"
+# include "Contact.hpp"
 
-class phoneBook
+class PhoneBook
 {
 	public:
-		phoneBook(void);
-		~phoneBook(void);
+		PhoneBook(void);
+		~PhoneBook(void);
 		int	check_place(void);
 		void change_oldest(void);
 		void fill_contact(std::string data[5]);
+		void show_search(void);
 		int search(int index);
 	private:
-		contact repertoir[8];
+		Contact repertoir[8];
 		int oldest;
 };
 
