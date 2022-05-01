@@ -4,13 +4,17 @@
 #include <string>
 #include <stdlib.h>
 
+#include <iostream>
+#include <string>
+#include <sstream>
+
 int main()
 {
 	std::string	cmd;
 	PhoneBook	rep;
 	std::string	data[5];
 	int			i = 0;
-	long int	index;
+	int			index = -1;
 
 	std::cout << "Welcome :" << std::endl;
 	while(1)
@@ -32,22 +36,30 @@ int main()
 				i++;
 			}
 			i = 0;
-			for (int z = 0; z < 5; z++)
-				std::cout << "data = |" << data[z] << "|" << std::endl;
+			// for (int z = 0; z < 5; z++)
+			// 	std::cout << "data = |" << data[z] << "|" << std::endl;
 			rep.fill_contact(data);
 		}
 		else if (cmd == "SEARCH")
 		{
 			rep.show_search();
-			std::cout << "Enter index :" << std::endl;
-			std::getline(std::cin, cmd);
-			while (cmd == "")
+			while (1)
 			{
-				std::cout << "Cannot be empty :" << std::endl;
+				std::cout << "Enter index :" << std::endl;
 				std::getline(std::cin, cmd);
+				while (cmd == "")
+				{
+					std::cout << "Cannot be empty :" << std::endl;
+					std::getline(std::cin, cmd);
+				}
+				std::stringstream convert(cmd);
+				convert >> index;
+				// std::cout << index << std::endl;
+				if (index > 0 && index < 9)
+					break ;
 			}
-			index = strtol(cmd, NULL, 10);
-			rep.search(1);
+			rep.search(index);
+			index = -1;
 		}
 		else if (cmd == "EXIT")
 			return (1);

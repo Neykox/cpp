@@ -22,7 +22,7 @@ void PhoneBook::change_oldest(void)
 {
 	if (this->oldest == 8)
 	{
-		std::cout << "changed oldest" << std::endl;
+		// std::cout << "changed oldest" << std::endl;
 		this->oldest = 0;
 	}
 }
@@ -35,15 +35,10 @@ void PhoneBook::fill_contact(std::string data[5])
 		target = 0;
 		change_oldest();
 	}
-	//else
-	//{
 	for (int i = 0; i < 5; i++)
 	{
 		this->repertoir[target].set_data(data[i]);
 	}
-	//}
-	// std::cout << "" << std::endl;
-	// this->repertoir[target].show_data();
 }
 
 int PhoneBook::check_place(void)
@@ -66,6 +61,6 @@ int PhoneBook::search(int index)
 {
 	if (index < 1 || index > 8)
 		return (1);
-	this->repertoir[index--].show_all_data();
+	this->repertoir[index - 1].show_all_data();
 	return (0);
 }
