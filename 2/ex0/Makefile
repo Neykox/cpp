@@ -1,7 +1,7 @@
-SRCS = 	main.cpp
+SRCS = 	main.cpp Fixed.cpp
 C.O = ${SRCS:.c=.o}
 
-NAME = human
+NAME = harlFilter
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
@@ -23,3 +23,4 @@ clean :
 	rm -f $(NAME)
 
 re : clean all
+

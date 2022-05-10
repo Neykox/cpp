@@ -2,21 +2,21 @@ SRCS = 	main.cpp
 C.O = ${SRCS:.c=.o}
 
 NAME = human
-
+hello
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
 $(NAME) :
-	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
+	$hello(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 # clean :
 # 	rm -f $(C.O)
 
 # fclean : clean
 # 	rm -f $(NAME)
-
+hell
 # re : fclean all
 
 clean :

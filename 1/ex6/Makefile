@@ -1,7 +1,7 @@
-SRCS = 	main.cpp
+SRCS = 	main.cpp Harl.cpp
 C.O = ${SRCS:.c=.o}
 
-NAME = human
+NAME = harlFilter
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
