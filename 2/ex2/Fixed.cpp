@@ -17,7 +17,7 @@ Fixed::Fixed(const float &tmp)
 
 Fixed::Fixed(const Fixed &tmp)
 {
-	this->val = tmp.getRawBits();
+	this->val = tmp.toFloat();
 }
 
 Fixed::~Fixed(void)
@@ -126,10 +126,61 @@ Fixed & Fixed::operator/(Fixed const & tmp)
 
 
 
-Fixed & operator++(Fixed const & tmp);
-Fixed & operator--(Fixed const & tmp);
-Fixed & operator++(Fixed const & tmp);
-Fixed & operator--(Fixed const & tmp);
+Fixed & Fixed::operator++()
+{
+	this->val++;
+	return (*this);
+}
+
+Fixed & Fixed::operator--()
+{
+	this->val--;
+	return (*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp(this->toFloat());
+	this->val++;
+	return (tmp);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp(this->toFloat());
+	this->val--;
+	return (tmp);
+}
+
+
+
+Fixed Fixed::min(Fixed & tmp1, Fixed & tmp2)
+{
+	if (tmp1.toFloat() < tmp2.toFloat())
+		return (tmp1.toFloat());
+	return (tmp2.toFloat());
+}
+
+Fixed Fixed::min(const Fixed & tmp1, const Fixed & tmp2)
+{
+	if (tmp1.toFloat() < tmp2.toFloat())
+		return (tmp1.toFloat());
+	return (tmp2.toFloat());
+}
+
+Fixed Fixed::max(Fixed & tmp1, Fixed & tmp2)
+{
+	if (tmp1.toFloat() > tmp2.toFloat())
+		return (tmp1.toFloat());
+	return (tmp2.toFloat());
+}
+
+Fixed Fixed::max(const Fixed & tmp1, const Fixed & tmp2)
+{
+	if (tmp1.toFloat() > tmp2.toFloat())
+		return (tmp1.toFloat());
+	return (tmp2.toFloat());
+}
 
 
 

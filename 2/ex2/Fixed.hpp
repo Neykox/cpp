@@ -40,11 +40,21 @@ class Fixed
 		Fixed & operator*(Fixed const & tmp);
 		Fixed & operator/(Fixed const & tmp);
 
-		Fixed & operator++(Fixed const & tmp);
-		Fixed & operator--(Fixed const & tmp);
-		Fixed & operator++(Fixed const & tmp);
-		Fixed & operator--(Fixed const & tmp);
+		Fixed & operator++();
+		Fixed & operator--();
+		Fixed operator++(int);
+		Fixed operator--(int);
+
+		static Fixed min(Fixed & tmp1, Fixed & tmp2);
+		static Fixed min(const Fixed & tmp1, const Fixed & tmp2);
+		static Fixed max(Fixed & tmp1, Fixed & tmp2);
+		static Fixed max(const Fixed & tmp1, const Fixed & tmp2);
 };
+
+Fixed min(Fixed & tmp1, Fixed & tmp2);
+Fixed min(const Fixed & tmp1, const Fixed & tmp2);
+Fixed max(Fixed & tmp1, Fixed & tmp2);
+Fixed max(const Fixed & tmp1, const Fixed & tmp2);
 
 std::ostream & operator<<(std::ostream & o, Fixed const & tmp);
 
