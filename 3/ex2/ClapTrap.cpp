@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap(void)
 {
-	std::cout << "No name constructor called" << std::endl;
+	std::cout << "ClapTrap no name constructor called" << std::endl;
 	this->name = "no name";
 	this->hit_points = 10;
 	this->energy_points = 10;
@@ -11,7 +11,7 @@ ClapTrap::ClapTrap(void)
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 	this->name = name;
 	this->hit_points = 10;
 	this->energy_points = 10;
@@ -20,13 +20,13 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::ClapTrap(const ClapTrap &tmp)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 	*this = tmp;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & tmp)
@@ -81,8 +81,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	std::cout << "ClapTrap " << this->name << " repaires himself for " << amount << " hit points" << std::endl;
 	this->hit_points += amount;
-	if (this->hit_points > 10)
-		this->hit_points = 10;
+	// if (this->hit_points > 10)
+	// 	this->hit_points = 10;
 	this->energy_points--;
 	std::cout << "ClapTrap " << this->name << " has " << this->hit_points << " hit points" << std::endl << std::endl;
 }
