@@ -1,7 +1,7 @@
-SRCS = 	main.cpp Fixed.cpp
+SRCS = 	main.cpp ClapTrap.cpp
 C.O = ${SRCS:.c=.o}
 
-NAME = harlFilter
+NAME = claptrap
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
