@@ -1,11 +1,16 @@
 #include "Form.hpp"
 
-Form::Form(void): name("Default Form"), gradeToExec(150), gradeToSign(150), is_signed(0)
+Form::Form(void): name("Default Form"), target("Default target"), gradeToExec(150), gradeToSign(150), is_signed(0)
 {
 	std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::Form(std::string name, int gradeToExec, int gradeToSign): name(name), gradeToExec(gradeToExec), gradeToSign(gradeToSign), is_signed(0)
+Form::Form(std::string name, std::string target): name(name), target(target), gradeToExec(150), gradeToSign(150), is_signed(0)
+{
+	std::cout << "Form with param constructor called" << std::endl;
+}
+
+Form::Form(std::string name, std::string target, int gradeToExec, int gradeToSign): name(name), target(target), gradeToExec(gradeToExec), gradeToSign(gradeToSign), is_signed(0)
 {
 	std::cout << "Form with param constructor called" << std::endl;
 	if (gradeToExec < 1)
@@ -18,7 +23,7 @@ Form::Form(std::string name, int gradeToExec, int gradeToSign): name(name), grad
 		throw Form::GradeTooLowException();
 }
 
-Form::Form(const Form &tmp): name(tmp.name), gradeToExec(tmp.gradeToExec), gradeToSign(tmp.gradeToSign), is_signed(0)
+Form::Form(const Form &tmp): name(tmp.name), target(tmp.target), gradeToExec(tmp.gradeToExec), gradeToSign(tmp.gradeToSign), is_signed(0)
 {
 	std::cout << "Form copy constructor called" << std::endl;
 }
@@ -37,6 +42,11 @@ Form & Form::operator=(Form const & tmp)
 std::string Form::getName() const
 {
 	return (this->name);
+}
+
+std::string Form::getTarget() const
+{
+	return (this->target);
 }
 
 int Form::getGradeToExec() const
@@ -62,9 +72,17 @@ void Form::beSigned(Bureaucrat const & tmp)
 		this->is_signed = 1;
 }
 
+void Form::execute(Bureaucrat const & tmp) const
+{
+	if (this->is_signed == 0)
+		throw Form::FormNotSignedException();
+	if (tmp.getGrade() > this->gradeToExec)
+		throw Form::GradeTooLowException();
+}
+
 
 std::ostream & operator<<(std::ostream & o, Form const & tmp)
 {
-	o << "Form: " << tmp.getName() << ", gradeToExec = " << tmp.getGradeToExec() << ", gradeToSign = " << tmp.getGradeToSign() << (tmp.get_is_signed()?", is signed.\n":", isnt signed.\n") << std::endl;
+	o << "Form: " << tmp.getName() << ", target = " << tmp.getTarget() << ", gradeToExec = " << tmp.getGradeToExec() << ", gradeToSign = " << tmp.getGradeToSign() << (tmp.get_is_signed()?", is signed.\n":", isnt signed.\n") << std::endl;
 	return o;
 }

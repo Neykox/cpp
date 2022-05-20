@@ -100,6 +100,11 @@ void Bureaucrat::gradeDown()
 
 void Bureaucrat::signForm(Form &tmp)
 {
+	if (tmp.get_is_signed() == 1)
+	{
+		std::cout << "Already signed.\n";
+		return ;
+	}
 	try
 	{
 		tmp.beSigned(*this);
@@ -110,6 +115,20 @@ void Bureaucrat::signForm(Form &tmp)
 		return ;
 	}
 	std::cout << this->getName() << " signed " << tmp.getName() << std::endl;
+}
+
+void Bureaucrat::executeForm(Form const & form)
+{
+	try
+	{
+		form.execute_part2(*this);
+	}
+	catch (Form::GradeTooLowException & e)
+	{
+		std::cout << this->getName() << " couldn't execute " << form.getName() << " because grade too low."<< std::endl;
+		return ;
+	}
+	std::cout << this->getName() << " executed " << form.getName() << std::endl;
 }
 
 
