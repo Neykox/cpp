@@ -24,7 +24,7 @@ class Form
 		Form(std::string name, std::string target);
 		Form(std::string name, std::string target, int gradeToExec, int gradeToSign);
 		Form(const Form &tmp);
-		~Form(void);
+		virtual ~Form(void);
 
 		Form & operator=(Form const & tmp);
 
