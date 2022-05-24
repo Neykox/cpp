@@ -17,7 +17,7 @@ Fixed::Fixed(const float &tmp)
 
 Fixed::Fixed(const Fixed &tmp)
 {
-	this->val = tmp.toFloat();
+	this->val = tmp.getRawBits();
 }
 
 Fixed::~Fixed(void)
@@ -115,12 +115,14 @@ Fixed & Fixed::operator-(Fixed const & tmp)
 Fixed & Fixed::operator*(Fixed const & tmp)
 {
 	this->val *= tmp.val;
+	this->val = this->val / (1 << this->sval);
 	return *this;
 }
 
 Fixed & Fixed::operator/(Fixed const & tmp)
 {
 	this->val /= tmp.val;
+	this->val = roundf(this->val * (1 << this->sval));
 	return *this;
 }
 

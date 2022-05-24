@@ -12,7 +12,7 @@ class Contact
 		void set_data(std::string data);
 		void show_data();
 		void show_all_data();
-
+	private:
 		std::string info[5];
 };
 

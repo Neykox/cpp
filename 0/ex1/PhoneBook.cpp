@@ -22,7 +22,6 @@ void PhoneBook::change_oldest(void)
 {
 	if (this->oldest == 8)
 	{
-		// std::cout << "changed oldest" << std::endl;
 		this->oldest = 0;
 	}
 }

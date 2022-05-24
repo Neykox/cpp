@@ -1,25 +1,20 @@
 SRCS = 	main.cpp Fixed.cpp
-C.O = ${SRCS:.c=.o}
+C.O = ${SRCS:.cpp=.o}
 
-NAME = harlFilter
+NAME = fixed
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
-$(NAME) :
-	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
-
-# clean :
-# 	rm -f $(C.O)
-
-# fclean : clean
-# 	rm -f $(NAME)
-
-# re : fclean all
+$(NAME) : $(C.O)
+	$(CC) $(FLAGS) $(C.O) -o $(NAME)
 
 clean :
+	rm -f $(C.O)
+
+fclean : clean
 	rm -f $(NAME)
 
-re : clean all
+re : fclean all

@@ -36,8 +36,6 @@ int main()
 				i++;
 			}
 			i = 0;
-			// for (int z = 0; z < 5; z++)
-			// 	std::cout << "data = |" << data[z] << "|" << std::endl;
 			rep.fill_contact(data);
 		}
 		else if (cmd == "SEARCH")
@@ -54,7 +52,6 @@ int main()
 				}
 				std::stringstream convert(cmd);
 				convert >> index;
-				// std::cout << index << std::endl;
 				if (index > 0 && index < 9)
 					break ;
 			}
@@ -66,3 +63,4 @@ int main()
 	}
 	return (0);
 }
+
