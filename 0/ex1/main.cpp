@@ -17,23 +17,26 @@ int main()
 	int			index = -1;
 
 	std::cout << "Welcome :" << std::endl;
-	while(1)
+	while(std::getline(std::cin, cmd))
 	{
-		std::getline(std::cin, cmd);
 		if (cmd.compare("ADD") == 0)
 		{
-			while (i < 5)
+			std::cout << "Enter info :" << std::endl;
+			while (std::getline(std::cin, cmd))
 			{
-				std::cout << "Enter info :" << std::endl;
-				std::getline(std::cin, cmd);
 				data[i] = cmd;
-				while (cmd == "")
-				{
+				if(cmd == "")
 					std::cout << "Cannot be empty :" << std::endl;
-					std::getline(std::cin, cmd);
+				while (cmd == "" && std::getline(std::cin, cmd))
+				{
+					if(cmd == "")
+						std::cout << "Cannot be empty :" << std::endl;
 					data[i] = cmd;
 				}
 				i++;
+				if (i == 5)
+					break ;
+				std::cout << "Enter info :" << std::endl;
 			}
 			i = 0;
 			rep.fill_contact(data);
@@ -41,19 +44,18 @@ int main()
 		else if (cmd == "SEARCH")
 		{
 			rep.show_search();
-			while (1)
+			std::cout << "Enter index :" << std::endl;
+			while (std::getline(std::cin, cmd))
 			{
-				std::cout << "Enter index :" << std::endl;
-				std::getline(std::cin, cmd);
-				while (cmd == "")
-				{
+				if(cmd == "")
 					std::cout << "Cannot be empty :" << std::endl;
-					std::getline(std::cin, cmd);
-				}
+				while (cmd == "" && std::getline(std::cin, cmd))
+					std::cout << "Cannot be empty :" << std::endl;
 				std::stringstream convert(cmd);
 				convert >> index;
 				if (index > 0 && index < 9)
 					break ;
+				std::cout << "Enter index :" << std::endl;
 			}
 			rep.search(index);
 			index = -1;
