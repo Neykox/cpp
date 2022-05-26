@@ -1,4 +1,4 @@
-SRCS = 	main.cpp
+SRCS = 	main.cpp Convert.cpp
 C.O = ${SRCS:.cpp=.o}
 
 NAME = convert

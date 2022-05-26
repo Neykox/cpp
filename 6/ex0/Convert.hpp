@@ -7,7 +7,9 @@
 #include <string>
 #include <tgmath.h>
 
-class Form;
+#include <cstdlib>
+#include <cctype>
+#include <limits>
 
 class Convert
 {
@@ -19,14 +21,24 @@ class Convert
 		char _char;
 	public:
 		Convert(std::string str);
+		Convert(const Convert &tmp);
 		~Convert(void);
 
-		void display(void) const;
+		std::string NonDisplayable() const;
+		int get_int() const;
+		float get_float() const;
+		double get_double() const;
 
-		class InvalidFormat: public std::exception{};
-		class Impossible: public std::exception{};
-		class NonDisplayable: public std::exception{};
+		class InvalidFormat: public std::exception
+		{
+			public:
+					const char* what() const throw()
+					{
+						return ("Invalid format\n");
+					}
+		};
 };
 
+std::ostream & operator<<(std::ostream & o, Convert const & tmp);
 
 #endif
