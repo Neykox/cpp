@@ -9,7 +9,7 @@ Convert::Convert(std::string init): str(init), _int(0), _double(0), _float(0), _
 		this->_char = static_cast<char>(*str.c_str());
 		type = 0;
 	}
-	else if (str.length() >= 1 && isdigit(*str.c_str()) != 0)
+	else if (str.length() >= 1 && (isdigit(*str.c_str()) != 0 || *str.c_str() == '-' || *str.c_str() == '+'))
 	{
 		char *end;
 		strtol(str.c_str(), &end, 10);
@@ -139,8 +139,6 @@ void Convert::do_conv(void)
 				_float = static_cast<float>(_double);
 			}
 			break ;
-		// default:
-		// 	;
 	}
 }
 
@@ -225,15 +223,12 @@ std::string const Convert::get_conv(void) const
 			ret.append("\nint: impossible");
 			ret.append("\nfloat: nanf");
 			ret.append("\ndouble: nan");
-		// default:
-		// 	;
 	}
 	return (ret);
 }
 
 std::ostream & operator<<(std::ostream & o, Convert const & tmp)
 {
-	// o << "char: " << tmp.NonDisplayable() << std::endl << "int: " << tmp.get_int() << std::endl << "float: " << tmp.get_float() << "f\ndouble: " << tmp.get_double() << std::endl;
 	o << tmp.get_conv() << std::endl;
 	return o;
 }
