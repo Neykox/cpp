@@ -21,8 +21,7 @@ class Convert
 		double _double;
 		float _float;
 		char _char;
-		int type;
-	public:
+		int type;	public:
 		Convert(std::string str);
 		Convert(const Convert &tmp);
 		~Convert(void);

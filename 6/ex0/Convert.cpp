@@ -44,8 +44,11 @@ Convert::Convert(std::string init): str(init), _int(0), _double(0), _float(0), _
 			type = 1;
 		}
 	}
+	else
+		type = 4;
 
-	this->do_conv();
+	if (type != 4)
+		this->do_conv();
 }
 
 Convert::Convert(const Convert &tmp): str(tmp.str), _int(tmp._int), _double(tmp._double), _float(tmp._float), _char(tmp._char), type(tmp.type)
@@ -159,7 +162,7 @@ std::string const Convert::get_conv(void) const
 			break ;
 		case 1:
 			if (_int < CHAR_MIN || _int > CHAR_MAX)
-				ret.append("char: impossible\n");
+				ret.append("char: impossible");
 			else
 			{
 				ret.append("char: ");
@@ -174,47 +177,54 @@ std::string const Convert::get_conv(void) const
 			break ;
 		case 2:
 			if (_float < CHAR_MIN || _float > CHAR_MAX)
-				ret.append("char: impossible\n");
+				ret.append("char: impossible");
 			else
 			{
 				ret.append("char: ");
 				ret.append(this->NonDisplayable());
 			}
 			if (_float < INT_MIN || _float > INT_MAX)
-				ret.append("int: impossible\n");
+				ret.append("\nint: impossible");
 			else
 			{
 				ret.append("\nint: ");
 				ret.append(std::to_string(this->get_int()));
-			}			ret.append("\nfloat: ");
+			}
+			ret.append("\nfloat: ");
 			ret.append(std::to_string(this->get_float()));
 			ret.append("f\ndouble: ");
 			ret.append(std::to_string(this->get_double()));
 			break ;
 		case 3:
 			if (_double < CHAR_MIN || _double > CHAR_MAX)
-				ret.append("char: impossible\n");
+				ret.append("char: impossible");
 			else
 			{
 				ret.append("char: ");
 				ret.append(this->NonDisplayable());
 			}
 			if (_double < INT_MIN || _double > INT_MAX)
-				ret.append("int: impossible\n");
+				ret.append("\nint: impossible");
 			else
 			{
 				ret.append("\nint: ");
 				ret.append(std::to_string(this->get_int()));
 			}
 			if (_double < FLT_MIN || _double > FLT_MAX)
-				ret.append("float: impossible\n");
+				ret.append("\nfloat: impossible");
 			else
 			{
 				ret.append("\nfloat: ");
 				ret.append(std::to_string(this->get_float()));
 			}
+			ret.append("f\ndouble: ");
 			ret.append(std::to_string(this->get_double()));
 			break ;
+		case 4:
+			ret.append("char: impossible");
+			ret.append("\nint: impossible");
+			ret.append("\nfloat: nanf");
+			ret.append("\ndouble: nan");
 		// default:
 		// 	;
 	}
