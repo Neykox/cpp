@@ -19,6 +19,7 @@ class Convert
 		double _double;
 		float _float;
 		char _char;
+		int type;
 	public:
 		Convert(std::string str);
 		Convert(const Convert &tmp);
@@ -35,6 +36,15 @@ class Convert
 					const char* what() const throw()
 					{
 						return ("Invalid format\n");
+					}
+		};
+
+		class Impossible: public std::exception
+		{
+			public:
+					const char* what() const throw()
+					{
+						return ("Impossible");
 					}
 		};
 };
