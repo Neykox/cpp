@@ -31,7 +31,8 @@ class Convert
 		int get_int() const;
 		float get_float() const;
 		double get_double() const;
-		std::string do_conv(void);
+		void do_conv(void);
+		std::string const get_conv(void) const;
 
 		class InvalidFormat: public std::exception
 		{
