@@ -9,7 +9,9 @@
 
 #include <cstdlib>
 #include <cctype>
+#include <climits>
 #include <limits>
+#include <cfloat>
 
 class Convert
 {
@@ -29,6 +31,7 @@ class Convert
 		int get_int() const;
 		float get_float() const;
 		double get_double() const;
+		std::string do_conv(void);
 
 		class InvalidFormat: public std::exception
 		{

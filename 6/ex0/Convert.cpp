@@ -67,7 +67,7 @@ std::string Convert::NonDisplayable() const
 
 int Convert::get_int() const
 {
-	return std::to_string(this->_int);
+	return this->_int;
 }
 
 float Convert::get_float() const
@@ -90,47 +90,92 @@ std::string Convert::do_conv(void)
 			_int = static_cast<int>(_char);
 			_float = static_cast<float>(_int);
 			_double = static_cast<double>(_int);
+			ret.append("char: ");
+			ret.append(this->NonDisplayable());
+			ret.append("\nint: ");
+			ret.append(std::to_string(this->get_int()));
+			ret.append("\nfloat: ");
+			ret.append(std::to_string(this->get_float()));
+			ret.append("f\ndouble: ");
+			ret.append(std::to_string(this->get_double()));
 			break ;
 		case 1:
 			if (_int < CHAR_MIN || _int > CHAR_MAX)
-				problem;
+				ret.append("char: impossible\n");
 			else
+			{
 				_char = static_cast<char>(_int);
+				ret.append("char: ");
+				ret.append(this->NonDisplayable());
+			}
 			_float = static_cast<float>(_int);
 			_double = static_cast<double>(_int);
+			ret.append("\nint: ");
+			ret.append(std::to_string(this->get_int()));
+			ret.append("\nfloat: ");
+			ret.append(std::to_string(this->get_float()));
+			ret.append("f\ndouble: ");
+			ret.append(std::to_string(this->get_double()));
 			break ;
 		case 2:
 			if (_float < CHAR_MIN || _float > CHAR_MAX)
-				problem;
+				ret.append("char: impossible\n");
 			else
+			{
 				_char = static_cast<char>(_float);
+				ret.append("char: ");
+				ret.append(this->NonDisplayable());
+			}
 			if (_float < INT_MIN || _float > INT_MAX)
-				problem;
+				ret.append("int: impossible\n");
 			else
+			{
 				_int = static_cast<int>(_float);
+				ret.append("\nint: ");
+				ret.append(std::to_string(this->get_int()));
+			}
 			_double = static_cast<double>(_float);
+			ret.append("\nfloat: ");
+			ret.append(std::to_string(this->get_float()));
+			ret.append("f\ndouble: ");
+			ret.append(std::to_string(this->get_double()));
 			break ;
 		case 3:
 			if (_double < CHAR_MIN || _double > CHAR_MAX)
-				problem;
+				ret.append("char: impossible\n");
 			else
+			{
 				_char = static_cast<char>(_double);
+				ret.append("char: ");
+				ret.append(this->NonDisplayable());
+			}
 			if (_double < INT_MIN || _double > INT_MAX)
-				problem;
+				ret.append("int: impossible\n");
 			else
+			{
 				_int = static_cast<int>(_double);
-			if (_double < FLOAT_MIN || _double > FLOAT_MAX)
-				problem;
+				ret.append("\nint: ");
+				ret.append(std::to_string(this->get_int()));
+			}
+			if (_double < FLT_MIN || _double > FLT_MAX)
+				ret.append("float: impossible\n");
 			else
-			_float = static_cast<float>(_double);
+			{
+				_float = static_cast<float>(_double);
+				ret.append("\nfloat: ");
+				ret.append(std::to_string(this->get_float()));
+			}
+			ret.append(std::to_string(this->get_double()));
 			break ;
-		default:
-			;
+		// default:
+		// 	;
 	}
+	return (ret);
 }
 
 std::ostream & operator<<(std::ostream & o, Convert const & tmp)
 {
-	o << "char: " << tmp.NonDisplayable() << std::endl << "int: " << tmp.get_int() << std::endl << "float: " << tmp.get_float() << "f\ndouble: " << tmp.get_double() << std::endl;
+	// o << "char: " << tmp.NonDisplayable() << std::endl << "int: " << tmp.get_int() << std::endl << "float: " << tmp.get_float() << "f\ndouble: " << tmp.get_double() << std::endl;
+	o << tmp.do_conv() << std::endl;
 	return o;
 }
