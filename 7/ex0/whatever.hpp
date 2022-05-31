@@ -1,0 +1,35 @@
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <tgmath.h>
+#include <cstdlib>
+#include <stdlib.h>
+#include <time.h>
+
+template < typename T >
+T max(T & a, T & b)
+{
+	return ((a>b) ? a : b);
+}
+
+template < typename T >
+T min(T & a, T & b)
+{
+	return ((a<b) ? a : b);
+}
+
+template < typename T >
+void swap(T & a, T & b)
+{
+	T tmp;
+
+	tmp = a;
+	a = b;
+	b = tmp;
+}
+
+#endif
