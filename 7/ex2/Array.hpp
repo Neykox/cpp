@@ -11,16 +11,48 @@
 #include <time.h>
 
 template<typename T>
-void iter(T * a, int b, void (*f)(T &))
+class Array
 {
-	int i;
+	private:
+		T array[n];
+		unsigned int n;
+	public:
+		Array(void): n(1)
+		{
+			std::cout << "Constructor called\n";
+		};
 
-	i = 0;
-	while (i < b)
-	{
-		f(a[i]);
-		i++;
-	}
+		Array(unsigned int n): n(n)
+		{
+			std::cout << "Constructor with param called\n";
+			if (n < 1)
+				throw Array::InvalidIndex();
+		};
+
+		Array(const Array &tmp)
+		{
+			std::cout << "Copy constructor called\n";
+			*this = tmp;
+		};
+
+		~Array(void)
+		{
+			std::cout << "Destructor called\n";
+			delete[] array;
+		};
+
+		Array & operator=(Array const & tmp) { *this = tmp | *this = new tmp; };
+
+		int size() const { return (this->n); };
+
+		class InvalidIndex: public std::exception
+		{
+			public:
+					const char* what() const throw()
+					{
+						return ("Invalid index\n");
+					}
+		};
 }
 
 #endif
