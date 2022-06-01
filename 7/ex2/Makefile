@@ -1,7 +1,7 @@
 SRCS = 	main.cpp
 C.O = ${SRCS:.cpp=.o}
 
-NAME = iter
+NAME = array
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
