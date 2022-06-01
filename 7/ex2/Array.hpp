@@ -14,19 +14,19 @@ template<typename T>
 class Array
 {
 	private:
-		T array[n];
 		unsigned int n;
+		T *array;
 	public:
-		Array(void): n(1)
+		Array(void): n(0)
 		{
 			std::cout << "Constructor called\n";
+			array = new T[0];
 		};
 
 		Array(unsigned int n): n(n)
 		{
 			std::cout << "Constructor with param called\n";
-			if (n < 1)
-				throw Array::InvalidIndex();
+			array = new T[n];
 		};
 
 		Array(const Array &tmp)
@@ -41,9 +41,26 @@ class Array
 			delete[] array;
 		};
 
-		Array & operator=(Array const & tmp) { *this = tmp | *this = new tmp; };
+		Array & operator=(Array const & tmp)
+		{
+			this->n = tmp.n;
+			this->array = new T[n];
+			for (int i = 0; i < n; i++)
+				array[i] = tmp.array[i];
+			return (*this);
+		};
 
-		int size() const { return (this->n); };
+		T & operator[](int index)
+		{
+			if (index >= n)
+				throw Array::InvalidIndex();
+			return (array[index]);
+		};
+
+		int size() const
+		{
+			return (this->n);
+		};
 
 		class InvalidIndex: public std::exception
 		{
@@ -53,6 +70,9 @@ class Array
 						return ("Invalid index\n");
 					}
 		};
-}
+};
 
 #endif
+
+	// if (n < 1)
+		// 	throw Array::InvalidIndex();
