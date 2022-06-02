@@ -1,7 +1,7 @@
-SRCS = 	main.cpp ClapTrap.cpp
+SRCS = 	main.cpp
 C.O = ${SRCS:.cpp=.o}
 
-NAME = claptrap
+NAME = easyfind
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
@@ -10,9 +10,6 @@ all : $(NAME)
 
 $(NAME) : $(C.O)
 	$(CC) $(FLAGS) $(C.O) -o $(NAME)
-
-# $(OBJ) :
-# 	$(CC) $(FLAGS) $(SRCS)
 
 clean :
 	rm -f $(C.O)

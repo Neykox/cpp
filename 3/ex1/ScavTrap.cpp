@@ -3,7 +3,6 @@
 ScavTrap::ScavTrap(void)
 {
 	std::cout << "ScavTrap no name constructor called" << std::endl;
-	// this->name = "no name";
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;

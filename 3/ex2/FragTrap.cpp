@@ -3,7 +3,6 @@
 FragTrap::FragTrap(void)
 {
 	std::cout << "FragTrap no name constructor called" << std::endl;
-	// this->name = "no name";
 	this->hit_points = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
