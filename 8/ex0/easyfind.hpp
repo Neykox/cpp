@@ -17,21 +17,12 @@
 #include <vector>
 
 template <typename T>
-T easyfind(T & t, int n)
+typename T::iterator easyfind(T & t, int n)
 {
-	std::vector<T>::iterator it = t.begin();
-	std::vector<T>::iterator ite = t.end();
-
-	while (it != ite)
-	{
-		if (*it == n)
-			return (*it);
-		it++;
-	}
-	return (*ite);
-	// std::vector<T>::iterator it;
-
-	// it = find_forst_of(t.begin(), t.end(). );
-};
+	return (find(t.begin(), t.end(), n));
+}
 
 #endif
+
+// template <class InputIterator, class T>
+//    InputIterator find (InputIterator first, InputIterator last, const T& val);

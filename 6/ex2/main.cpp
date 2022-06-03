@@ -32,21 +32,22 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
+	Base tmp;
 	try
 	{
-		A &tmp = dynamic_cast<A &>(p);
+		tmp = dynamic_cast<A &>(p);
 		std::cout << "Real type = A" << std::endl;
 	}
 	catch (std::bad_cast &bc) {}
 	try
 	{
-		B &tmp = dynamic_cast<B &>(p);
+		tmp = dynamic_cast<B &>(p);
 		std::cout << "Real type = B" << std::endl;
 	}
 	catch (std::bad_cast &bc) {}
 	try
 	{
-		C &tmp = dynamic_cast<C &>(p);
+		tmp = dynamic_cast<C &>(p);
 		std::cout << "Real type = C" << std::endl;
 	}
 	catch (std::bad_cast &bc) {}
