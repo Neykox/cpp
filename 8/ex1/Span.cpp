@@ -1,15 +1,15 @@
 #include "Span.hpp"
 
-Span::Span(void): n(0)
+Span::Span(void): max(0)
 {
 	std::cout << "Constructor called\n";
-	array = new int[0];
+	array.reserve(0);
 }
 
-Span::Span(unsigned int n): n(n)
+Span::Span(unsigned int n): max(n)
 {
 	std::cout << "Constructor with param called\n";
-	array = new int[n];
+	array.reserve(max);
 }
 
 Span::Span(const Span &tmp)
@@ -21,37 +21,40 @@ Span::Span(const Span &tmp)
 Span::~Span(void)
 {
 	std::cout << "Destructor called\n";
-	delete[] array;
 }
 
 Span::Span & operator=(Span const & tmp)
 {
-	this->n = tmp.n;
-	this->array = new int[n];
-	for (unsigned int i = 0; i < n; i++)
+	this->max = tmp.max;
+	this->array.reserve(max);
+	for (unsigned int i = 0; i < curr; i++)
 		array[i] = tmp.array[i];
 	return (*this);
 }
 
-int Span::size() const
-{
-	return (this->n);
-}
-
 int Span::shortestSpan() const
 {
-	if (this->n < 2)
+	if (this->array.size() < 2)
 		throw Span::NotEnoughElem();
 }
 
 int Span::longestSpan() const
 {
-	if (this->n < 2)
+	if (this->array.size() < 2)
 		throw Span::NotEnoughElem();
+	return (*array.max_element(array.begin(), array.end()) - *array.min_element(array.begin(), array.end()));
 }
 
 void Span::addNumber(int to_add)
 {
-	if ()
+	if (this->array.size() == this->curr)
 		throw Span::AlreadyFull();
+	this->array.pushback(to_add);
+}
+
+void Span::addNumber(std::vector<int> & tmp)
+{
+	if (this->array.size() == this->curr)
+		throw Span::AlreadyFull();
+	this->array.insert(this->array.end(), tmp.begin(), tmp.end());
 }
