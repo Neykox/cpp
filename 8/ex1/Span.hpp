@@ -7,9 +7,8 @@
 
 class Span
 {
-	private:
+	public:
 		unsigned int max;
-		unsigned int curr;
 		std::vector<int> array;
 	public:
 		Span(void);
@@ -22,7 +21,7 @@ class Span
 		int shortestSpan() const;
 		int longestSpan() const;
 		void addNumber(int to_add);
-		void Span::addNumber(std::vector<int> & tmp);
+		void addNumber(std::vector<int> & tmp);
 
 		class AlreadyFull: public std::exception
 		{
