@@ -73,6 +73,3 @@ class Array
 };
 
 #endif
-
-	// if (n < 1)
-		// 	throw Array::InvalidIndex();

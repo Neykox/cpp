@@ -47,6 +47,7 @@ int Span::shortestSpan() const
 		if (diff < *it && diff > min)
 			diff = *it;
 	}
+	return (diff - min);
 }
 
 int Span::longestSpan() const

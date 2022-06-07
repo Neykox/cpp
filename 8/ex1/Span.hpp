@@ -7,7 +7,7 @@
 
 class Span
 {
-	public:
+	private:
 		unsigned int max;
 		std::vector<int> array;
 	public:
