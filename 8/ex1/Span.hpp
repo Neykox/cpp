@@ -7,7 +7,7 @@
 
 class Span
 {
-	private:
+	public:
 		unsigned int max;
 		std::vector<int> array;
 	public:
@@ -17,6 +17,7 @@ class Span
 		~Span(void);
 		Span & operator=(Span const & tmp);
 
+		std::vector<int> getArray() const;
 		int size() const;
 		int shortestSpan() const;
 		int longestSpan() const;

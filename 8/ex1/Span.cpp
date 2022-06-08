@@ -32,22 +32,25 @@ Span & Span::operator=(Span const & tmp)
 	return (*this);
 }
 
+std::vector<int> Span::getArray() const
+{
+	return (this->array);
+}
+
 int Span::shortestSpan() const
 {
 	if (this->array.size() < 2)
 		throw Span::NotEnoughElem();
-	int min = *std::min_element(array.begin(), array.end());
-	int diff = array[0];
-
-	// for (std::vector<int>::iterator it = sp.array.begin(); it != sp.array.end(); ++it)
- //      std::cout << *it << ' ';
-
-	for (std::vector<int>::iterator it = this->array.begin(); it != this->array.end(); it++)
+	int diff = INT_MAX;
+	for (std::vector<int>::iterator it = getArray().begin(); it != getArray().end(); it++)
 	{
-		if (diff < *it && diff > min)
-			diff = *it;
+		for (std::vector<int>::iterator itt = it + 1; itt != getArray().end(); itt++)
+		{
+			if (abs(*it - *itt) < diff)
+				diff = abs(*it - *itt);
+		}
 	}
-	return (diff - min);
+	return (diff);
 }
 
 int Span::longestSpan() const
@@ -66,7 +69,7 @@ void Span::addNumber(int to_add)
 
 void Span::addNumber(std::vector<int> & tmp)
 {
-	if (this->array.size() == this->max)
+	if (tmp.size() + this->array.size() > this->max)
 		throw Span::AlreadyFull();
 	this->array.insert(this->array.end(), tmp.begin(), tmp.end());
 }

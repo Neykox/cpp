@@ -3,50 +3,32 @@
 
 #include <iostream>
 #include <algorithm>
+#include <stack>
 
 template<typename T>
 class MutantStack : public std::stack<T>
 {
 	public:
-		MutantStack(void):
-		{
-			std::cout << "Constructor called\n";
-		};
-
-		MutantStack(T t):
-		{
-			std::cout << "Constructor with param called\n";
-		};
-
-		MutantStack(const MutantStack &tmp)
-		{
-			std::cout << "Copy constructor called\n";
-			*this = tmp;
-		};
-
-		~MutantStack(void)
-		{
-			std::cout << "Destructor called\n";
-		};
+		MutantStack(void): std::stack<T>(){}
+		MutantStack(const MutantStack &tmp) : std::stack<T>(tmp){}
+		virtual ~MutantStack(void){}
 
 		MutantStack & operator=(MutantStack const & tmp)
 		{
+			this->c = tmp.c;
 			return (*this);
-		};
+		}
 
-		int size() const
-		{
-			return (this->n);
-		};
 
-		class InvalidIndex: public std::exception
+		MutantStack::<T>::iterator begin(void)
 		{
-			public:
-					const char* what() const throw()
-					{
-						return ("Invalid index\n");
-					}
-		};
+			return (std::begin(T));
+		}
+
+		MutantStack::<T>::iterator end(void)
+		{
+			return (std::end(T));
+		}
 };
 
 #endif
