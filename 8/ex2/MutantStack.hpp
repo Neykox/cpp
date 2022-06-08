@@ -19,15 +19,16 @@ class MutantStack : public std::stack<T>
 			return (*this);
 		}
 
+		typedef typename std::stack<T>::container_type::iterator iterator;
 
-		MutantStack::<T>::iterator begin(void)
+		iterator begin(void)
 		{
-			return (std::begin(T));
+			return (std::begin(std::stack<T>::c));
 		}
 
-		MutantStack::<T>::iterator end(void)
+		iterator end(void)
 		{
-			return (std::end(T));
+			return (std::end(std::stack<T>::c));
 		}
 };
 
