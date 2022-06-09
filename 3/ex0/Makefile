@@ -1,63 +1,56 @@
-SRCS = 	main.cpp ClapTrap.cpp
-C.O = ${SRCS:.cpp=.o}
+#-----------------------------------------------#
+################### PATHS #######################
+#-----------------------------------------------#
+HEAD_PATH	=	./#includes/
+SRCS_PATH	=	./#scr/
+OBJ_PATH	=	./objects/
+
+#-----------------------------------------------#
+################## SOURCES ######################
+#-----------------------------------------------#
+SRCS_NAME =		main.cpp						\
+				ClapTrap.cpp
+OBJ_NAME = ${SRCS_NAME:.cpp=.o}
+
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
+SRC = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
+
+#-----------------------------------------------#
+################## HEADERS ######################
+#-----------------------------------------------#
+HEADERS =	ClapTrap.hpp
+
+#-----------------------------------------------#
+################### OTHER #######################
+#-----------------------------------------------#
 
 NAME = claptrap
 
 CC = c++
+
 FLAGS = -Wall -Wextra -Werror -std=c++98
+
+#-----------------------------------------------#
+################### RULES #######################
+#-----------------------------------------------#
 
 all : $(NAME)
 
-$(NAME) : $(C.O)
-	$(CC) $(FLAGS) $(C.O) -o $(NAME)
+$(NAME) : $(OBJ)
+	$(CC) $(FLAGS) $^ -o $(NAME)
 
-# $(OBJ) :
-# 	$(CC) $(FLAGS) $(SRCS)
+$(OBJ_PATH):
+	mkdir -p $@
+
+$(OBJ_PATH)%.o : $(SRCS_PATH)%.cpp
+	$(CC) $(FLAGS) -c $< -o $@
+
+$(OBJ) : Makefile $(HEADERS) | $(OBJ_PATH)
 
 clean :
-	rm -f $(C.O)
+	rm -rf $(OBJ_PATH)
 
 fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
-
-
-
-
-
-
-
-SRC_NAME = megaphone.cpp
-OBJ_NAME = $(SRC_NAME:.cpp=.o)
-
-NAME = megaphone
-
-CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-
-OBJ = $(addprefix obj/, $(OBJ_NAME))
-SRC = $(addprefix src/, $(SRC_NAME))
-
-
-$(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-
-obj/%.o: src/%.cpp
-	mkdir -p obj/
-	$(CC) $(FLAGS) -o $@ -c $<
-
-all: $(NAME)
-
-clean:
-	rm -rf obj
-
-fclean: clean
-	rm -rf $(NAME)
-
-re: fclean all
-
-.PHONY: all clean fclean re
-
-
-# man c++

@@ -5,7 +5,6 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <algorithm>
 #include <tgmath.h>
 #include "Bureaucrat.hpp"
 

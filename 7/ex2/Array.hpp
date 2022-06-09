@@ -45,12 +45,12 @@ class Array
 		{
 			this->n = tmp.n;
 			this->array = new T[n];
-			for (int i = 0; i < n; i++)
+			for (unsigned int i = 0; i < n; i++)
 				array[i] = tmp.array[i];
 			return (*this);
 		};
 
-		T & operator[](int index)
+		T & operator[](unsigned int index)
 		{
 			if (index >= n)
 				throw Array::InvalidIndex();
@@ -73,6 +73,3 @@ class Array
 };
 
 #endif
-
-	// if (n < 1)
-		// 	throw Array::InvalidIndex();
