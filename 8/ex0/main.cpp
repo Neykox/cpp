@@ -3,15 +3,14 @@
 
 int main()
 {
-	int val[] = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9};
+	std::vector<int> mstack;
+	mstack.push_back(5);
+	mstack.push_back(17);
+	mstack.push_back(3);
+	mstack.push_back(5);
+	mstack.push_back(737);
 
-	std::cout << easyfind<>(val, 4) << "\n";
-	std::cout << easyfind<>(val, 12) << "\n";
-
-
-	// std::vector<char> cal = {'h', 'e', 'l', 'l', 'o'};
-
-	// std::cout << easyfind<>(cal, 'o') << "\n";
-	// std::cout << easyfind<>(cal, 'q') << "\n";
+	std::cout << *easyfind<>(mstack, 4) << "\n";
+	std::cout << *easyfind<>(mstack, 17) << "\n";
 	return 0;
 }
