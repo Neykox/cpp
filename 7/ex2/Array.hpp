@@ -50,7 +50,7 @@ class Array
 			return (*this);
 		};
 
-		T & operator[](unsigned int index)
+		T & operator[](unsigned int index) const
 		{
 			if (index >= n)
 				throw Array::InvalidIndex();

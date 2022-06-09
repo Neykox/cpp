@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <stack>
+#include <iterator>
 
 template<typename T>
 class MutantStack : public std::stack<T>
@@ -23,12 +24,12 @@ class MutantStack : public std::stack<T>
 
 		iterator begin(void)
 		{
-			return (std::begin(std::stack<T>::c));
+			return (std::stack<T>::c.begin());
 		}
 
 		iterator end(void)
 		{
-			return (std::end(std::stack<T>::c));
+			return (std::stack<T>::c.end());
 		}
 };
 
